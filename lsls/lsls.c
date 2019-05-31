@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   }
   else
   {
-    printf("Cannot open directory '%s'", argv[1]);
+    printf("Cannot open directory '%s'. Too many args", argv[1]);
     return 1;
   }
 
@@ -35,6 +35,7 @@ int main(int argc, char **argv)
   while ((ent = readdir(dp)) != NULL)
   {
     stat(ent->d_name, &buf);
+    // width 10 for file size
     printf("%10lld %s\n", buf.st_size, ent->d_name);
   }
 
